@@ -1,0 +1,146 @@
+<h2>All Drug Information</h2>
+<!-- note to self to make search criteria visible -->
+
+<% require 'rest-client' %>
+
+ 
+<% @brand_root='https://rxnav.nlm.nih.gov/REST/brands?ingredientids=' %>
+<% @class_root= 'https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui?rxcui='  %>
+
+<table border="1"; style="width:100%">
+	<tr>
+			<th> drug name </th>
+			<th> RxNorm CUI </th>
+			<th> brand name </th>
+			<th> class name </th>
+			<th> relationship </th>
+			<th> source </th>
+			<th> Pharm link </th>
+			<th> SIDER link </th>
+	</tr>
+	<% @drug_details.each do |drug_detail| %>
+		
+		<% @brand_url = @brand_root+drug_detail.RxNorm_CUI.to_s %>
+		<% brand_doc = Nokogiri::XML(RestClient.get(@brand_url)) %>
+		<% @brands= brand_doc.xpath("//name")%>
+		<% count = @brands.length%>
+		
+		<% @class_url = @class_root+drug_detail.RxNorm_CUI.to_s %>
+		<% class_doc = Nokogiri::XML(RestClient.get(@class_url)) %>
+		<% @full= class_doc.xpath("//className")%>
+		<% @rela= class_doc.xpath("//rela")%>
+		<% @sour= class_doc.xpath("//relaSource")%>
+		<% @classes = [] %>
+		<% @relationship = [] %>
+		<% @sources = [] %>
+		<% j=0 %>
+		<% while j<@full.length %>
+			<% exist=false %>
+			<% @classes.each do |c| %>
+				<% if @full[j].to_s==c.to_s %>
+					<%exist=true%>
+				<%end%>
+			<%end%>
+			<%if exist==false%>
+				<%@classes<<@full[j] %>
+				<%@relationship<<@rela[j] %>
+				<%@sources<<@sour[j] %>
+			<%end%>
+			<%exist=false%>
+			<% j+=1 %>
+		<%end%>
+		<% c_count = @classes.length%>
+		
+		<tr>
+			<td> <%=drug_detail.drug_name%></td>
+			<td> <%=drug_detail.RxNorm_CUI%></td>
+			<% if count>0 %>
+				<% temp = @brands[0].to_s %>
+				<% temp=temp[temp.index('>')+1..-1] %>
+				<% temp=temp[0..temp.index('<')-1] %>
+				<td><%= temp %> </td>
+			<% else %>
+				<td></td>
+			<% end %>
+			<% if c_count>0 %>
+				<% temp = @classes[0].to_s %>
+				<% temp=temp[temp.index('>')+1..-1] %>
+				<% temp=temp[0..temp.index('<')-1] %>
+				<td><%= temp %> </td>
+				<% if @relationship[0].to_s!="<rela/>" %>
+					<% temp1 = @relationship[0].to_s %>
+					<% temp1=temp1[temp1.index('>')+1..-1] %>
+					<% temp1=temp1[0..temp1.index('<')-1] %>
+					<td><%= temp1 %> </td>
+				<% else %>
+					<td></td>
+				<%end%>
+				<% if @sources[0]!=nil %>
+					<% temp2 = @sources[0].to_s %>
+					<% temp2=temp2[temp2.index('>')+1..-1] %>
+					<% temp2=temp2[0..temp2.index('<')-1] %>
+					<td><%= temp2 %> </td>
+				<% else %>
+					<td></td>
+				<%end%>
+			<% else %>
+				<td></td>
+				<td></td>
+				<td></td>
+			<% end %>
+			<td> <%= link_to "PharmGKB", drug_detail.pharm_link, :target => "_blank" %></td>
+			<td> <%= link_to "SIDER", drug_detail.SIDER_link, :target => "_blank" %></td>
+		</tr>
+		
+		<% i=1 %>
+		<% max=20 %>
+		<% while i<max %>
+			<tr>
+				<% if count>i || c_count>i %>
+					<td></td>
+					<td></td>
+					<% if count>i %>
+						<% temp = @brands[i].to_s %>
+						<% temp=temp[temp.index('>')+1..-1] %>
+						<% temp=temp[0..temp.index('<')-1] %>
+						<td><%= temp %> </td>
+					<% else %>
+						<td></td>
+					<% end %>
+					<% if c_count>i %>
+						<% temp = @classes[i].to_s %>
+						<% temp=temp[temp.index('>')+1..-1] %>
+						<% temp=temp[0..temp.index('<')-1] %>
+						<td><%= temp %> </td>
+						<% if @relationship[i].to_s!="<rela/>" %>
+							<% temp1 = @relationship[i].to_s %>
+							<% temp1=temp1[temp1.index('>')+1..-1] %>
+							<% temp1=temp1[0..temp1.index('<')-1] %>
+							<td><%= temp1 %> </td>
+						<% else %>
+							<td></td>
+						<%end%>
+						<% if @sources[i]!=nil %>
+							<% temp2 = @sources[i].to_s %>
+							<% temp2=temp2[temp2.index('>')+1..-1] %>
+							<% temp2=temp2[0..temp2.index('<')-1] %>
+							<td><%= temp2 %> </td>
+						<%else%>
+							<td></td>
+						<%end%>
+					<% else %>
+						<td></td>
+						<td></td>
+						<td></td>
+					<% end %>
+					<td></td>
+					<td></td>
+				<% end %>
+			</tr>
+			<%i+=1%>
+		<%end%>		
+	<% end %>
+</table>
+ 
+<%= link_to "key for abbreviations", 'https://rxnav.nlm.nih.gov/RxClassIntro.html', :target => "_blank" %> | 
+<%= link_to "home", controller: "genes", action: "home"%> 

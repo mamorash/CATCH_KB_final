@@ -1,0 +1,17 @@
+<h1> edit cancer entry </h1>
+
+<%= form_for @cancer_detail do |f| %>
+  <p>
+    <%= f.label :cancer_name %><br>
+    <%= f.text_field :cancer_name %>
+  </p>
+  
+  <p>
+    <%= f.label :snomed_sctid %><br>
+    <%= f.text_field :snomed_sctid %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

@@ -1,0 +1,62 @@
+<h2>Showing gene details:</h2>
+<!-- note to self to make gene ID visible -->
+
+<table border="1";style="table-layout: fixed; width:100%">
+<tr>
+	<th> gene </th>
+	<th> variant </th>
+	<th> family name </th>
+	<th> HGNC ID </th>
+	<th> KEGG link </th>
+	<th> GWAS link </th>
+	<th> PharmGKB link </th>
+</tr>
+	<% @gene_details.each do |gene_detail| %>
+		<tr>
+			<td> <%= gene_detail.gene_name %> </td>
+			<td> <%= gene_detail.variant_list %> </td>
+			<td> <%= gene_detail.family_name_1 %> </td>
+			<td> <%= gene_detail.family_id_1 %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "KEGG", gene_detail.KEGG_link, :target => "_blank" %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "GWAS Catalog", gene_detail.GWAS_link, :target => "_blank" %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "PharmGKB", gene_detail.pharm_link, :target => "_blank" %> </td>
+		</tr>
+		<tr>
+			<% if gene_detail.family_name_2!=nil %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene_detail.family_name_2 %> </td>
+				<td> <%= gene_detail.family_id_2 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if gene_detail.family_name_3!=nil %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene_detail.family_name_3 %> </td>
+				<td> <%= gene_detail.family_id_3 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if gene_detail.family_name_4!=nil %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene_detail.family_name_4 %> </td>
+				<td> <%= gene_detail.family_id_4 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+
+
+<%= link_to "Home", controller: "genes", action: "home" %> | 
+<%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> | 

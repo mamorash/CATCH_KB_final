@@ -1,0 +1,72 @@
+<h1> create new gene entry </h1>
+
+<%= form_for @gene do |f| %>
+  <p>
+    <%= f.label :gene_name %><br>
+    <%= f.text_field :gene_name %>
+  </p>
+ 
+  <p>
+    <%= f.label :variant_list %><br>
+    <%= f.text_area :variant_list %>
+  </p>
+  
+  <p>
+    <%= f.label :family_name_1 %><br>
+    <%= f.text_area :family_name_1 %>
+  </p>
+  
+  <p>
+    <%= f.label :family_id_1 %><br>
+    <%= f.text_area :family_id_1 %>
+  </p>
+  
+   <p>
+    <%= f.label :family_name_2 %><br>
+    <%= f.text_area :family_name_2 %>
+  </p>
+  
+  <p>
+    <%= f.label :family_id_2 %><br>
+    <%= f.text_area :family_id_2 %>
+  </p>
+  
+    <p>
+    <%= f.label :family_name_3 %><br>
+    <%= f.text_area :family_name_3 %>
+  </p>
+  
+  <p>
+    <%= f.label :family_id_3 %><br>
+    <%= f.text_area :family_id_3 %>
+  </p>
+  
+   <p>
+    <%= f.label :family_name_4 %><br>
+    <%= f.text_area :family_name_4 %>
+  </p>
+  
+  <p>
+    <%= f.label :family_id_4 %><br>
+    <%= f.text_area :family_id_4%>
+  </p>
+  
+  <p>
+    <%= f.label :kegg_link %><br>
+    <%= f.text_area :kegg_link %>
+  </p>
+  
+  <p>
+    <%= f.label :gwas_link %><br>
+    <%= f.text_area :gwas_link %>
+  </p>
+  
+   <p>
+    <%= f.label :pharm_link %><br>
+    <%= f.text_area :pharm_link %>
+  </p>
+
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

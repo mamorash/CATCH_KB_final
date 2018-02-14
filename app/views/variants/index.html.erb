@@ -1,0 +1,21 @@
+<h2>All Variant Information</h2>
+<!-- note to self to make search criteria visible -->
+<p> Frequencies pulled from Exome Aggregation Consortium (ExAC) API  </p>
+
+ 
+<% url_root='exac.hms.harvard.edu/rest/dbsnp/' %>
+
+<table border="1"; style="width:100%">
+	<tr>
+		<th> variant </th>
+		<th> allele frequency </th>
+	</tr>
+	<tr>
+		<% @variants.each do |variant| %>
+			<td> <%=variant.variant%> </td>
+			<td><%=variant.gene%></td>
+		</tr>
+	<% end %>
+</table>
+ 
+<%= link_to "home", controller: "genes", action: "home"%> 

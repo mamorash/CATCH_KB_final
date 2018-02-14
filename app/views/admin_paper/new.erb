@@ -1,0 +1,309 @@
+<h1> create new paper entry </h1>
+
+<%= form_for @paper do |f| %>
+  <p>
+    <%= f.label :PMID %><br>
+    <%= f.text_field :PMID %>
+  </p>
+ 
+  <p>
+    <%= f.label :study_date %><br>
+    <%= f.text_area :study_date %>
+  </p>
+  
+  <p>
+    <%= f.label :canddiate_or_GWAS %><br>
+    <%= f.text_area :canddiate_or_GWAS %>
+  </p>
+  
+  <p>
+    <%= f.label :num_SNPs %><br>
+    <%= f.text_area :num_SNPs %>
+  </p>
+  
+   <p>
+    <%= f.label :prospective_or_retrospective %><br>
+    <%= f.text_area :prospective_or_retrospective %>
+  </p>
+  
+  <p>
+    <%= f.label :how_cardiotoxicity_measured %><br>
+    <%= f.text_area :how_cardiotoxicity_measured %>
+  </p>
+  
+    <p>
+    <%= f.label :EF_threshold %><br>
+    <%= f.text_area :EF_threshold %>
+  </p>
+  
+  <p>
+    <%= f.label :cancer_type %><br>
+    <%= f.text_area :cancer_type %>
+  </p>
+  
+   <p>
+    <%= f.label :drug_exposed_to %><br>
+    <%= f.text_area :drug_exposed_to %>
+  </p>
+  
+  <p>
+    <%= f.label :cumulative_dose_measurement_type %><br>
+    <%= f.text_area :cumulative_dose_measurement_type%>
+  </p>
+  
+  <p>
+    <%= f.label :cumulative_dose_unit %><br>
+    <%= f.text_area :cumulative_dose_unit %>
+  </p>
+  
+  <p>
+    <%= f.label :cumulative_dose_combined_value %><br>
+    <%= f.text_area :cumulative_dose_combined_value %>
+  </p>
+  
+   <p>
+    <%= f.label :cumulative_dose_discovery_case %><br>
+    <%= f.text_area :cumulative_dose_discovery_case %>
+  </p>
+     
+  <p>
+    <%= f.label :cumulative_dose_discovery_control %><br>
+    <%= f.text_area :cumulative_dose_discovery_control %>
+  </p>
+  
+  <p>
+    <%= f.label :cumulative_dose_replication_case %><br>
+    <%= f.text_area :cumulative_dose_replication_case %>
+  </p>
+     
+  <p>
+    <%= f.label :cumulative_dose_replication_2_control %><br>
+    <%= f.text_area :cumulative_dose_replication_2_control %>
+  </p>
+  
+  
+   <p>
+    <%= f.label :CTCAE_level %><br>
+    <%= f.text_area :CTCAE_level %>
+  </p>
+     
+  <p>
+    <%= f.label :cardiotoxicity_description %><br>
+    <%= f.text_area :cardiotoxicity_description %>
+  </p>
+  
+  
+  <p>
+    <%= f.label :follow_up_measurement_type %><br>
+    <%= f.text_area :follow_up_measurement_type %>
+  </p>
+     
+  <p>
+    <%= f.label :follow_up_unit %><br>
+    <%= f.text_area :follow_up_unit %>
+  </p>
+  
+  <p>
+    <%= f.label :follow_up_description %><br>
+    <%= f.text_area :follow_up_description %>
+  </p>
+     
+  <p>
+    <%= f.label :follow_up_discovery_combined_value %><br>
+    <%= f.text_area :follow_up_discovery_combined_value %>
+  </p>
+  
+  <p>
+    <%= f.label :follow_up_discovery_case_value %><br>
+    <%= f.text_area :follow_up_discovery_case_value %>
+  </p>
+     
+  <p>
+    <%= f.label :follow_up_discovery_control_value %><br>
+    <%= f.text_area :follow_up_discovery_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :follow_up_replication_combined_value %><br>
+    <%= f.text_area :follow_up_replication_combined_value %>
+  </p>
+     
+  <p>
+    <%= f.label :follow_up_replication_case_value %><br>
+    <%= f.text_area :follow_up_replication_case_value %>
+  </p>
+
+  <p>
+    <%= f.label :follow_up_replication_control_value %><br>
+    <%= f.text_area :follow_up_replication_control_value %>
+  </p>
+     
+  <p>
+    <%= f.label :follow_up_replication_2_case_value %><br>
+    <%= f.text_area :follow_up_replication_2_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :follow_up_replication_2_control_value %><br>
+    <%= f.text_area :follow_up_replication_2_control_value %>
+  </p> 
+  
+  <p>
+    <%= f.label :population_age_measurement_type %><br>
+    <%= f.text_area :population_age_measurement_type %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_unit %><br>
+    <%= f.text_area :population_age_unit %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_discovery_combined_value %><br>
+    <%= f.text_area :population_age_discovery_combined_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_discovery_case_value %><br>
+    <%= f.text_area :population_age_discovery_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_discovery_control_value %><br>
+    <%= f.text_area :population_age_discovery_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_replication_combined_value %><br>
+    <%= f.text_area :population_age_replication_combined_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_replication_case_value %><br>
+    <%= f.text_area :population_age_replication_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_replication_control_value %><br>
+    <%= f.text_area :population_age_replication_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_replication_2_case_value %><br>
+    <%= f.text_area :population_age_replication_2_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_age_replication_2_control_value %><br>
+    <%= f.text_area :population_age_replication_2_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_race_discovery %><br>
+    <%= f.text_area :population_race_discovery %>
+  </p>
+  
+  <p>
+    <%= f.label :population_race_replication %><br>
+    <%= f.text_area :population_race_replication %>
+  </p>
+  
+  <p>
+    <%= f.label :poulation_race_replication_2 %><br>
+    <%= f.text_area :poulation_race_replication_2 %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_measurement_type %><br>
+    <%= f.text_area :population_sex_measurement_type %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_discovery_combined_value %><br>
+    <%= f.text_area :population_sex_discovery_combined_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_discovery_case_value %><br>
+    <%= f.text_area :population_sex_discovery_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_discovery_control_value %><br>
+    <%= f.text_area :population_sex_discovery_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_replication_combined_value %><br>
+    <%= f.text_area :population_sex_replication_combined_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_replication_case_value %><br>
+    <%= f.text_area :population_sex_replication_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_replication_control_value %><br>
+    <%= f.text_area :population_sex_replication_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_replication_2_case_value %><br>
+    <%= f.text_area :population_sex_replication_2_case_value %>
+  </p>
+  
+  <p>
+    <%= f.label :population_sex_replication_2_control_value %><br>
+    <%= f.text_area :population_sex_replication_2_control_value %>
+  </p>
+  
+  <p>
+    <%= f.label :confound_factors_monitored %><br>
+    <%= f.text_area :confound_factors_monitored %>
+  </p>
+  
+  <p>
+    <%= f.label :study_size_discovery %><br>
+    <%= f.text_area :study_size_discovery %>
+  </p>
+  
+  <p>
+    <%= f.label :num_discovery_cases %><br>
+    <%= f.text_area :num_discovery_cases %>
+  </p>
+  
+  <p>
+    <%= f.label :study_size_replication %><br>
+    <%= f.text_area :study_size_replication %>
+  </p>
+  
+  <p>
+    <%= f.label :num_replication_cases %><br>
+    <%= f.text_area :num_replication_cases %>
+  </p>
+  
+  <p>
+    <%= f.label :study_size_replication_2 %><br>
+    <%= f.text_area :study_size_replication_2 %>
+  </p>
+  
+  <p>
+    <%= f.label :num_replication_2_cases %><br>
+    <%= f.text_area :num_replication_2_cases %>
+  </p>
+  
+  <p>
+    <%= f.label :study_cohort_notes %><br>
+    <%= f.text_area :study_cohort_notes %>
+  </p>
+    
+  <p>
+    <%= f.label :sequencing_platform %><br>
+    <%= f.text_area :sequencing_platform %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

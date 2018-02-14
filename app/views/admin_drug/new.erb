@@ -1,0 +1,27 @@
+<h1> edit drug entry </h1>
+
+<%= form_for @drug_detail do |f| %>
+  <p>
+    <%= f.label :drug_name %><br>
+    <%= f.text_field :drug_name %>
+  </p>
+  
+  <p>
+    <%= f.label :rxnorm_CUI %><br>
+    <%= f.text_field :rxnorm_CUI %>
+  </p>
+  
+    <p>
+    <%= f.label :pharm_link %><br>
+    <%= f.text_field :pharm_link %>
+  </p>
+  
+    <p>
+    <%= f.label :sider_link %><br>
+    <%= f.text_field :sider_link %>
+  </p>
+  
+  <p>
+    <%= f.submit %>
+  </p>
+<% end %>

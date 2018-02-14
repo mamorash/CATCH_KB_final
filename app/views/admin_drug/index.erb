@@ -1,0 +1,30 @@
+<h2>All Drug Information</h2>
+<!-- note to self to make search criteria visible -->
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> drug name </th>
+		<th> RxNorm CUI </th>
+		<th> Pharm link </th>
+		<th> SIDER link </th>
+		<th>edit</th>
+		<th>delete</th>
+	</tr>
+	<% @drug_details.each do |drug_detail| %>
+		<tr>
+			<% if drug_detail!=nil %>
+				<td> <%=drug_detail.drug_name%></td>
+				<td> <%=drug_detail.rxnorm_CUI%></td>
+				<td> <%= link_to "PharmGKB", drug_detail.pharm_link, :target => "_blank" %></td>
+				<td> <%= link_to "SIDER", drug_detail.sider_link, :target => "_blank" %></td>
+				<td> <%= link_to "edit", controller: "admin_drug", action: "edit", query: drug_detail.rxnorm_CUI %> </td>
+				<td> <%= link_to "delete", controller: "admin_drug", action: "destroy", query: drug_detail.rxnorm_CUI %></td>
+			<% end %>
+		</tr>
+	<%end%>
+</table>
+
+
+<%= link_to "new_drug", controller: "admin_drug", action: "new"%> 
+<%= link_to "admin home", controller: "admin", action: "index"%> 
+<%= link_to "home", controller: "genes", action: "home"%> 

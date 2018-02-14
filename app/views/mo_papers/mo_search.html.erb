@@ -1,0 +1,64 @@
+<h2>Animal Paper Search Results</h2>
+<!-- note to self to make search criteria visible -->
+
+
+<% @pmid_string = 'https://www.ncbi.nlm.nih.gov/pubmed/' %>
+
+<table border="1"; style="table-layout: fixed; width:100%;">
+<tr>
+	<th> PMID </th>
+	<th> study date </th>
+	<th> model organism </th>
+	<th> animal age </th>
+	<th> animal gender	</th>
+	<th> group descriptions </th>
+	<th> dug exposure </th>
+	<th> drug schedule </th>
+	<th> cumulative dose </th>
+	<th> tumor type </th>
+	
+</tr>
+	<% @search_results.each do |paper| %>
+		<% @temp1 = @pmid_string + paper.PMID.to_s %>
+		<tr>
+			<td> <%= link_to paper.PMID, @temp1, :target => "_blank" %> </td>
+			<td> <%= paper.study_date %> </td>
+			<td> <%= paper.model_organism %> </td>
+			<td> <%= paper.animal_age %> </td>
+			<td> <%= paper.animal_gender %> </td>
+			<td style="word-wrap: break-word"> <%= paper.group_descriptions %> </td>
+			<td> <%= paper.drug_exposure %> </td>
+			<td> <%= paper.drug_schedule %> </td>
+			<td> <%= paper.cumulative_dose %> </td>
+			<td> <%= paper.tumor_type %> </td>
+		</tr>
+	<% end %>
+</table>
+	
+<table border="1";style="table-layout: fixed; width:100%, border=1">
+	<tr>
+		<th> PMID </th>
+		<th> how cardiotoxicity measured </th>
+		<th> human gene name </th>
+		<th> gene altered direction </th>
+		<th> gene altered method </th>
+		<th> association description</th>
+	</tr>
+	
+	<% @mo_papers.each do |paper| %>
+		<% @temp1 = @pmid_string + paper.PMID.to_s %>
+		<tr>
+			<td> <%= link_to paper.PMID, @temp1, :target => "_blank" %> </td>
+			<td style="word-wrap: break-word"> <%= paper.how_ctx_measured %> </td>
+			<td> <%= paper.human_gene_name %> </td>
+			<td> <%= paper.gene_altered_direction %> </td>
+			<td> <%= paper.gene_altered_method %> </td>
+			<td style="word-wrap: break-word"> <%= paper.assoc_desc %> </td>
+		</tr>
+		
+	<% end %>
+
+</table>
+
+ 
+<%= link_to "home", controller: "genes", action: "home"%> 

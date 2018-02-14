@@ -1,0 +1,65 @@
+<h1>All Associations Reported</h1>
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> gene </th>
+		<th> variant </th>
+		<th> PMID </th>
+		<th> p-value </th>
+		<th> odds ratio </th>
+		<th> 95% CI </th>
+		<th> detail </th>
+		<th> signficance threshold </th>
+	</tr>
+	<% @findings.each do |finding| %>
+		<tr>
+			<td> <%= finding.gene_name %> </td>
+			<td> <%= finding.variant %> </td>
+			<td> <%= finding.PMID %> </td>
+			<td> <%= finding.primary_study_p_value %> </td>
+			<td> <%= finding.primary_study_or %> </td>
+			<td> <%= finding.primary_study_95_ci %> </td>
+			<td> <%= finding.primary_study_association_description %> </td>
+			<td> <%= finding.primary_study_p_value_significance_threshold %> </td>
+		</tr>
+		<tr>
+			<% if finding.secondary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.secondary_study_p_value %> </td>
+				<td> <%= finding.secondary_study_or %> </td>
+				<td> <%= finding.secondary_study_95_ci %> </td>
+				<td> <%= finding.secondary_study_association_description %> </td>
+				<td> <%= finding.secondary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if finding.tertiary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.tertiary_study_p_value %> </td>
+				<td> <%= finding.tertiary_study_or %> </td>
+				<td> <%= finding.tertiary_study_95_ci %> </td>
+				<td> <%= finding.tertiary_study_association_description %> </td>
+				<td> <%= finding.tertiary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if finding.combined_analysis_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.combined_study_p_value %> </td>
+				<td> <%= finding.combined_study_or %> </td>
+				<td> <%= finding.combined_study_95_ci %> </td>
+				<td> <%= finding.combined_study_association_description %> </td>
+				<td> <%= finding.combined_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+
+ 
+<%= link_to "home", controller: "genes", action: "home"%> 

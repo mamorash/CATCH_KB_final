@@ -1,0 +1,183 @@
+<h1>Study Portal</h1>
+
+<% @pmid_string = 'https://www.ncbi.nlm.nih.gov/pubmed/' %>
+<% @cancer = [] %>
+
+<table border="1"; style="table-layout: fixed; width:100%;">
+<tr>
+	<th> PMID </th>
+	<th> study date </th>
+	<th> type of study </th>
+	<th> number of SNPs </th>
+	<th> cancer type </th>
+	<th> cardiotoxicity detail </th>
+	<th> CTCAE level </th>
+	<th> study size </th>
+	<th> number of cases </th>
+	<th> study cohort details </th>
+	<th> sequencing platform </th>
+	<th> edit </th>
+	<th> delete </th>
+</tr>
+	<% @study_details.each do |study_detail| %>
+		<%if study_detail.cancer_type!=nil %>
+			<% temp=study_detail.cancer_type.split(/with|or|and/) %>
+			<% temp.each do |t| %>
+				<% exist = false %>
+				<% t=t.strip %>
+				<% @cancer.each do |c| %>
+					<%c=c.strip%>
+					<% if t==c %>
+						<% exist=true %>
+					<% end %>
+				<% end %>
+				<% if exist==false %>
+					<% @cancer << t %>
+				<% end %>
+				<% exist=false %>
+			<% end %>
+		<% end %>
+		<% @temp1 = @pmid_string + study_detail.PMID.to_s %>
+		<tr>
+			<td> <%= link_to study_detail.PMID, @temp1, :target => "_blank" %> </td>
+			<td> <%= study_detail.study_date %> </td>
+			<td> <%= study_detail.canddiate_or_GWAS %> </td>
+			<td> <%= study_detail.num_SNPs %> </td>
+			<td style="word-wrap: break-word"> <%= study_detail.cancer_type %> </td>
+			<td style="word-wrap: break-word"> <%= study_detail.cardiotoxicity_description %> </td>
+			<td> <%= study_detail.CTCAE_level %> </td>
+			<td> <%= study_detail.study_size_discovery %> </td>
+			<td> <%= study_detail.num_discovery_cases %> </td>
+			<td> <%= study_detail.study_cohort_notes %> </td>
+			<td> <%= study_detail.sequencing_platform %> </td>
+			<td> <%= link_to "edit", controller: "admin_paper", action: "edit", query: study_detail.PMID %> </td>
+			<td> <%= link_to "delete", controller: "admin_paper", action: "destroy", query: study_detail.PMID %></td>
+		</tr>
+		<tr>
+			<% if study_detail.study_size_replication!=nil  %>
+				<td> <%= "replication" %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.study_size_replication %> </td>
+				<td> <%= study_detail.num_replication_cases %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if study_detail.study_size_replication_2!=nil  %>
+				<td> <%= "second replication" %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.study_size_replication_2 %> </td>
+				<td> <%= study_detail.num_replication_2_cases %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+	
+<table border="1";style="table-layout: fixed; width:100%, border=1">
+	<tr>
+		<th> PMID </th>
+		<th> follow up measurement </th>
+		<th> unit </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+		<th> population age measurement </th>
+		<th> unit </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+		<th> race </th>
+		<th> population sex measurement </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+	</tr>
+	
+	<% @study_details.each do |study_detail| %>
+		<% @temp2 = @pmid_string + study_detail.PMID.to_s %>
+		<tr>
+			<td> <%= link_to study_detail.PMID, @temp2, :target => "_blank" %> </td>
+			<td> <%= study_detail.follow_up_measurement_type %> </td>
+			<td> <%= study_detail.follow_up_unit %> </td>
+			<td> <%= study_detail.follow_up_discovery_combined_value %> </td>
+			<td> <%= study_detail.follow_up_discovery_case_value %> </td>
+			<td> <%= study_detail.follow_up_discovery_control_value %> </td>
+			<td> <%= study_detail.population_age_measurement_type %> </td>
+			<td> <%= study_detail.population_age_unit %> </td>
+			<td> <%= study_detail.population_age_discovery_combined_value %> </td>
+			<td> <%= study_detail.population_age_discovery_case_value %> </td>
+			<td> <%= study_detail.population_age_discovery_control_value %> </td>
+			<td> <%= study_detail.population_race_discovery %> </td>
+			<td> <%= study_detail.population_sex_measurement_type %> </td>
+			<td> <%= study_detail.population_sex_discovery_combined_value %> </td>
+			<td> <%= study_detail.population_sex_discovery_case_value %> </td>
+			<td> <%= study_detail.population_sex_discovery_control_value %> </td>
+		</tr>
+		<tr>
+			<% if study_detail.study_size_replication!=nil  %>
+				<td> <%= "replication"  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.follow_up_replication_combined_value %> </td>
+				<td> <%= study_detail.follow_up_replication_case_value %> </td>
+				<td> <%= study_detail.follow_up_replication_control_value %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.population_age_replication_combined_value %> </td>
+				<td> <%= study_detail.population_age_replication_case_value %> </td>
+				<td> <%= study_detail.population_age_replication_control_value %> </td>
+				<td> <%= study_detail.population_race_replication %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.population_sex_replication_combined_value %> </td>
+				<td> <%= study_detail.population_sex_replication_case_value %> </td>
+				<td> <%= study_detail.population_sex_replication_control_value %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if study_detail.study_size_replication_2!=nil  %>
+				<td> <%= "second replication"  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.follow_up_replication_2_case_value %> </td>
+				<td> <%= study_detail.follow_up_replication_2_control_value %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.population_age_replication_2_case_value %> </td>
+				<td> <%= study_detail.population_age_replication_2_control_value %> </td>
+				<td> <%= study_detail.poulation_race_replication_2 %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= study_detail.population_sex_replication_2_case_value %> </td>
+				<td> <%= study_detail.population_sex_replication_2_control_value %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+
+</table>
+
+<%= link_to "new_paper", controller: "admin_paper", action: "new"%> 
+<%= link_to "admin home", controller: "admin", action: "index"%> 
+<%= link_to "home", controller: "genes", action: "home"%> 
+
+
+
+

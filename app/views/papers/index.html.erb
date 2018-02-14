@@ -1,0 +1,154 @@
+<h2>All Paper Information</h2>
+<!-- note to self to make search criteria visible -->
+
+<% @pmid_string = 'https://www.ncbi.nlm.nih.gov/pubmed/' %>
+
+<table border="1"; style="table-layout: fixed; width:100%;">
+<tr>
+	<th> PMID </th>
+	<th> study date </th>
+	<th> type of study </th>
+	<th> number of SNPs </th>
+	<th> cancer type </th>
+	<th> cardiotoxicity detail </th>
+	<th> CTCAE level </th>
+	<th> study size </th>
+	<th> number of cases </th>
+	<th> study cohort details </th>
+	<th> sequencing platform </th>
+	
+</tr>
+	<% @papers.each do |paper| %>
+		<% @temp1 = @pmid_string + paper.PMID.to_s %>
+		<tr>
+			<td> <%= link_to paper.PMID, @temp1, :target => "_blank" %> </td>
+			<td> <%= paper.study_date %> </td>
+			<td> <%= paper.canddiate_or_GWAS %> </td>
+			<td> <%= paper.num_SNPs %> </td>
+			<td style="word-wrap: break-word"> <%= paper.cancer_type %> </td>
+			<td style="word-wrap: break-word"> <%= paper.cardiotoxicity_description %> </td>
+			<td> <%= paper.CTCAE_level %> </td>
+			<td> <%= paper.study_size_discovery %> </td>
+			<td> <%= paper.num_discovery_cases %> </td>
+			<td> <%= paper.study_cohort_notes %> </td>
+			<td> <%= paper.sequencing_platform %> </td>
+		</tr>
+		<tr>
+			<% if paper.study_size_replication!=nil  %>
+				<td> <%= "replication" %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.study_size_replication %> </td>
+				<td> <%= paper.num_replication_cases %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if paper.study_size_replication_2!=nil  %>
+				<td> <%= "second replication" %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td style="word-wrap: break-word"> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.study_size_replication_2 %> </td>
+				<td> <%= paper.num_replication_2_cases %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+	
+<table border="1";style="table-layout: fixed; width:100%, border=1">
+	<tr>
+		<th> PMID </th>
+		<th> follow up measurement </th>
+		<th> unit </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+		<th> population age measurement </th>
+		<th> unit </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+		<th> race </th>
+		<th> population sex measurement </th>
+		<th> combined value </th>
+		<th> case value </th>
+		<th> control value </th>
+	</tr>
+	
+	<% @papers.each do |paper| %>
+		<% @temp1 = @pmid_string + paper.PMID.to_s %>
+		<tr>
+			<td> <%= link_to paper.PMID, @temp1, :target => "_blank" %> </td>
+			<td> <%= paper.follow_up_measurement_type %> </td>
+			<td> <%= paper.follow_up_unit %> </td>
+			<td> <%= paper.follow_up_discovery_combined_value %> </td>
+			<td> <%= paper.follow_up_discovery_case_value %> </td>
+			<td> <%= paper.follow_up_discovery_control_value %> </td>
+			<td> <%= paper.population_age_measurement_type %> </td>
+			<td> <%= paper.population_age_unit %> </td>
+			<td> <%= paper.population_age_discovery_combined_value %> </td>
+			<td> <%= paper.population_age_discovery_case_value %> </td>
+			<td> <%= paper.population_age_discovery_control_value %> </td>
+			<td> <%= paper.population_race_discovery %> </td>
+			<td> <%= paper.population_sex_measurement_type %> </td>
+			<td> <%= paper.population_sex_discovery_combined_value %> </td>
+			<td> <%= paper.population_sex_discovery_case_value %> </td>
+			<td> <%= paper.population_sex_discovery_control_value %> </td>
+		</tr>
+		<tr>
+			<% if paper.study_size_replication!=nil  %>
+				<td> <%= "replication"  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.follow_up_replication_combined_value %> </td>
+				<td> <%= paper.follow_up_replication_case_value %> </td>
+				<td> <%= paper.follow_up_replication_control_value %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.population_age_replication_combined_value %> </td>
+				<td> <%= paper.population_age_replication_case_value %> </td>
+				<td> <%= paper.population_age_replication_control_value %> </td>
+				<td> <%= paper.population_race_replication %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.population_sex_replication_combined_value %> </td>
+				<td> <%= paper.population_sex_replication_case_value %> </td>
+				<td> <%= paper.population_sex_replication_control_value %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if paper.study_size_replication_2!=nil  %>
+				<td> <%= "second replication"  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.follow_up_replication_2_case_value %> </td>
+				<td> <%= paper.follow_up_replication_2_control_value %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.population_age_replication_2_case_value %> </td>
+				<td> <%= paper.population_age_replication_2_control_value %> </td>
+				<td> <%= paper.poulation_race_replication_2 %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= paper.population_sex_replication_2_case_value %> </td>
+				<td> <%= paper.population_sex_replication_2_control_value %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+
+</table>
+
+ 
+<%= link_to "home", controller: "genes", action: "home"%> 

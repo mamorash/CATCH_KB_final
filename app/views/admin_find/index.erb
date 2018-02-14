@@ -1,0 +1,70 @@
+<h1>List of all associations reported between a variant and chemotherapy-induced cardiotoxicity</h1>
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> gene </th>
+		<th> variant </th>
+		<th> PMID </th>
+		<th> p-value </th>
+		<th> odds ratio </th>
+		<th> 95% CI </th>
+		<th> detail </th>
+		<th> signficance threshold </th>
+		<th>edit</th>
+		<th>delete</th>
+	</tr>
+	<% @findings.each do |finding| %>
+		<tr>
+			<td> <%= finding.gene_name %> </td>
+			<td> <%= finding.variant %> </td>
+			<td> <%= finding.PMID %> </td>
+			<td> <%= finding.primary_study_p_value %> </td>
+			<td> <%= finding.primary_study_or %> </td>
+			<td> <%= finding.primary_study_95_ci %> </td>
+			<td> <%= finding.primary_study_association_description %> </td>
+			<td> <%= finding.primary_study_p_value_significance_threshold %> </td>
+			<td> <%= link_to "edit", controller: "admin_find", action: "edit", query: finding.variant, type: finding.PMID %> </td>
+			<td> <%= link_to "delete", controller: "admin_find", action: "destroy", query: finding.id %></td>
+		</tr>
+		<tr>
+			<% if finding.secondary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.secondary_study_p_value %> </td>
+				<td> <%= finding.secondary_study_or %> </td>
+				<td> <%= finding.secondary_study_95_ci %> </td>
+				<td> <%= finding.secondary_study_association_description %> </td>
+				<td> <%= finding.secondary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if finding.tertiary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.tertiary_study_p_value %> </td>
+				<td> <%= finding.tertiary_study_or %> </td>
+				<td> <%= finding.tertiary_study_95_ci %> </td>
+				<td> <%= finding.tertiary_study_association_description %> </td>
+				<td> <%= finding.tertiary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if finding.combined_analysis_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= finding.combined_study_p_value %> </td>
+				<td> <%= finding.combined_study_or %> </td>
+				<td> <%= finding.combined_study_95_ci %> </td>
+				<td> <%= finding.combined_study_association_description %> </td>
+				<td> <%= finding.combined_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+
+<%= link_to "new_finding", controller: "admin_find", action: "new"%> 
+<%= link_to "admin home", controller: "admin", action: "index"%> 
+<%= link_to "home", controller: "genes", action: "home"%> 

@@ -1,0 +1,76 @@
+<h2>Search Results</h2>
+<%= "Search criteria: " + @search_term %>
+<!-- note to self to make search criteria visible -->
+
+<% @gene_name=[] %>
+<% @study_name=[] %>
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> gene </th>
+		<th> variant </th>
+		<th> PMID </th>
+		<th> p-value </th>
+		<th> odds ratio </th>
+		<th> 95% CI </th>
+		<th> detail </th>
+		<th> signficance threshold </th>
+	</tr>
+	<% @search_results.each do |search_result| %>
+		<% @gene_name << search_result.gene_name %>
+		<% @study_name << search_result.PMID %>
+		<tr>
+			<td> <%= search_result.gene_name %> </td>
+			<td> <%= search_result.variant %> </td>
+			<td> <%= search_result.PMID %> </td>
+			<td> <%= search_result.primary_study_p_value %> </td>
+			<td> <%= search_result.primary_study_or %> </td>
+			<td> <%= search_result.primary_study_95_ci %> </td>
+			<td> <%= search_result.primary_study_association_description %> </td>
+			<td> <%= search_result.primary_study_p_value_significance_threshold %> </td>
+		</tr>
+		<tr>
+			<% if search_result.secondary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= search_result.secondary_study_description  %> </td>
+				<td> <%= search_result.secondary_study_p_value %> </td>
+				<td> <%= search_result.secondary_study_or %> </td>
+				<td> <%= search_result.secondary_study_95_ci %> </td>
+				<td> <%= search_result.secondary_study_association_description %> </td>
+				<td> <%= search_result.secondary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if search_result.tertiary_study_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= search_result.tertiary_study_p_value %> </td>
+				<td> <%= search_result.tertiary_study_or %> </td>
+				<td> <%= search_result.tertiary_study_95_ci %> </td>
+				<td> <%= search_result.tertiary_study_association_description %> </td>
+				<td> <%= search_result.tertiary_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if search_result.combined_analysis_y_n == "yes" %>
+				<td> <%=  %> </td>
+				<td> <%=  %> </td>
+				<td> <%= "combined study"  %> </td>
+				<td> <%= search_result.combined_study_p_value %> </td>
+				<td> <%= search_result.combined_study_or %> </td>
+				<td> <%= search_result.combined_study_95_ci %> </td>
+				<td> <%= search_result.combined_study_association_description %> </td>
+				<td> <%= search_result.combined_study_p_value_significance_threshold %> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+
+
+<%= link_to "Gene detail", controller: "genes", action: "gene_detail", query: @search_term %> | 
+<%= link_to "Study detail", controller: "genes", action: "study_detail", query: @search_term %> | 
+<%= link_to "Back to home page", controller: "genes", action: "home" %> |
+
+

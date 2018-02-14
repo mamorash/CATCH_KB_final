@@ -1,0 +1,72 @@
+<h1> Gene Portal </h1>
+
+<table border="1";style="table-layout: fixed; width:100%">
+<tr>
+	<th> gene </th>
+	<th> variant </th>
+	<th> family name </th>
+	<th> HGNC ID </th>
+	<th> KEGG link </th>
+	<th> GWAS link </th>
+	<th> PharmGKB link </th>
+	<th> edit </th>
+	<th> delete </th>
+</tr>
+	<% @genes.each do |gene| %>
+		<tr>
+			<td> <%= gene.gene_name %> </td>
+			<td> <%= gene.variant_list %> </td>
+			<td> <%= gene.family_name_1 %> </td>
+			<td> <%= gene.family_id_1 %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "KEGG", gene.kegg_link, :target => "_blank" %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "GWAS Catalog", gene.gwas_link, :target => "_blank" %> </td>
+			<td style="word-wrap: break-word"> <%= link_to "PharmGKB", gene.pharm_link, :target => "_blank" %> </td>
+			<td> <%= link_to "edit", controller: "admin_gene", action: "edit", query: gene.gene_name %> </td>
+			<td> <%= link_to "delete", controller: "admin_gene", action: "destroy", query: gene.gene_name %></td>
+		</tr>
+		<tr>
+			<% if (gene.family_name_2!=nil)&&(gene.family_name_2!="") %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene.family_name_2 %> </td>
+				<td> <%= gene.family_id_2 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if (gene.family_name_3!=nil)&&(gene.family_name_3!="") %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene.family_name_3 %> </td>
+				<td> <%= gene.family_id_3 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+		<tr>
+			<% if (gene.family_name_4!=nil)&&(gene.family_name_4!="") %> 
+				<td> </td>
+				<td> </td>
+				<td> <%= gene.family_name_4 %> </td>
+				<td> <%= gene.family_id_4 %> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+				<td> </td>
+			<% end %>
+		</tr>
+	<% end %>
+</table>
+
+
+<%= link_to "new_gene", controller: "admin_gene", action: "new"%> 
+<%= link_to "admin home", controller: "admin", action: "index"%> 
+<%= link_to "home", controller: "genes", action: "home"%> 

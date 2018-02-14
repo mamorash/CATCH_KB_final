@@ -1,0 +1,37 @@
+<!-- THIS IS THE HOME PAGE -->
+<h1>Welcome CATCH-KB: the cardiotoxicity of chemotherapy knowledgebase</h1>
+<p>This is version 0.2, CATCH-KB is still under development</p>
+
+<pre>
+
+</pre>
+
+<h2>human-based studies</h2>
+<p>search by PMID, gene ID, or variant</p>
+
+<%= form_tag search_path, method: 'get' do %>
+	<%= text_field_tag :search_keywords, params[:search_keywords] %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+
+|<%= link_to "Show all associations", controller: "findings", action: "index"%> | 
+<%= link_to "Show all papers", controller: "papers", action: "index"%> | 
+<%= link_to "Show all cancer types", controller: "cancer_details", action: "index"%> | 
+<%= link_to "Show all drugs exposed to", controller: "drug_details", action: "index"%> | 
+<%= link_to "Show all genes", controller: "genes", action: "index"%> | 
+<%= link_to "Show all variants", controller: "variants", action: "index"%> |
+<%= link_to "admin", controller: "admin", action: "index"%> | 
+
+<pre>
+
+</pre>
+<h2>additional model organism papers</h2>
+<p>search by PMID or gene ID</p>
+
+<%= form_tag mo_search_path, method: 'get' do %>
+	<%= text_field_tag :mo_search_keywords, params[:mo_search_keywords] %>
+	<%= submit_tag "Search" %>
+<% end %>
+
+|<%= link_to "Show animal papers", controller: "mo_papers", action: "index"%> | 

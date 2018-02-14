@@ -1,0 +1,19 @@
+<h2>Showing all cancer types:</h2>
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> cancer name </th>
+		<th> SNOMED ID </th>
+	</tr>
+	<% @cancer_details.each do |cancer_detail| %>
+		<tr>
+			<% if cancer_detail!=nil %>
+				<td> <%=cancer_detail.cancer_name%></td>
+				<td> <%=cancer_detail.SNOMED_SCTID%></td>
+			<% end %>
+		</tr>
+	<%end%>
+</table>
+
+ 
+<%= link_to "home", controller: "genes", action: "home"%> 

@@ -1,0 +1,25 @@
+<h1>cancer_details#index</h1>
+<p>Find me in app/views/studys/index.html.erb</p>
+
+<table border="1";style="width:100%">
+	<tr>
+		<th> cancer name </th>
+		<th> SNOMED ID </th>
+		<th>edit</th>
+		<th>delete</th>
+	</tr>
+	<% @cancer_details.each do |cancer_detail| %>
+		<tr>
+			<% if cancer_detail!=nil %>
+				<td> <%=cancer_detail.cancer_name%></td>
+				<td> <%=cancer_detail.snomed_sctid%></td>
+				<td> <%= link_to "edit", controller: "admin_cancer", action: "edit", query: cancer_detail.cancer_name %> </td>
+				<td> <%= link_to "delete", controller: "admin_cancer", action: "destroy", query: cancer_detail.cancer_name %></td>
+			<% end %>
+		</tr>
+	<%end%>
+</table>
+
+<%= link_to "new_cancer", controller: "admin_cancer", action: "new"%> 
+<%= link_to "admin home", controller: "admin", action: "index"%> 
+<%= link_to "home", controller: "genes", action: "home"%> 
