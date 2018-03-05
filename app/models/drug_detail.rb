@@ -4,7 +4,7 @@ class Drug_detail < ApplicationRecord
 		drugs = []
 		keywords.each do |keyword|
 			if keyword.drug_exposed_to!=nil
-				temp=keyword.drug_exposed_to.split(/with|or|and/)
+				temp=keyword.drug_exposed_to.split(/ with | or | and /)
 				temp.each do |t|
 					exist=false
 					t=t.strip

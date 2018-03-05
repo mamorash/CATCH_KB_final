@@ -1,5 +1,7 @@
+<% provide(:title, "Drug Details") %>
 <h2>All Drug Information</h2>
-<!-- note to self to make search criteria visible -->
+
+</br>
 
 <% require 'rest-client' %>
 
@@ -7,7 +9,8 @@
 <% @brand_root='https://rxnav.nlm.nih.gov/REST/brands?ingredientids=' %>
 <% @class_root= 'https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui?rxcui='  %>
 
-<table border="1"; style="width:100%">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 			<th> drug name </th>
 			<th> RxNorm CUI </th>
@@ -141,6 +144,16 @@
 		<%end%>		
 	<% end %>
 </table>
+</div>
+
+
+</br>
+</br>
+</br>
+
  
-<%= link_to "key for abbreviations", 'https://rxnav.nlm.nih.gov/RxClassIntro.html', :target => "_blank" %> | 
-<%= link_to "home", controller: "genes", action: "home"%> 
+<span title="Click to see key for abbreviations used in table above"><%= link_to "key for abbreviations", 'https://rxnav.nlm.nih.gov/RxClassIntro.html', :target => "_blank" %> </span>|  
+<span title="Click to return to the home page"><%= link_to "home", controller: "genes", action: "home"%></span> 
+
+</br>
+</br>

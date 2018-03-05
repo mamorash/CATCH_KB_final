@@ -1,5 +1,7 @@
-<h2>Additonal Drug Information</h2>
-<!-- note to self to make search criteria visible -->
+<% provide(:title, "Drug details") %>
+<h2> Drug details for papers returned for search: <%= @search_term %> </h2>
+
+</br>
 
 <% require 'rest-client' %>
 
@@ -7,7 +9,8 @@
 <% @brand_root='https://rxnav.nlm.nih.gov/REST/brands?ingredientids=' %>
 <% @class_root= 'https://rxnav.nlm.nih.gov/REST/rxclass/class/byRxcui?rxcui='  %>
 
-<table border="1"; style="width:100%">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 			<th> drug name </th>
 			<th> RxNorm CUI </th>
@@ -142,6 +145,16 @@
 		<%end%>	
 	<% end %>
 </table>
-<%= link_to "key for abbreviations", 'https://rxnav.nlm.nih.gov/RxClassIntro.html', :target => "_blank" %> | 
-<%= link_to "Home", controller: "genes", action: "home" %> | 
-<%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> | 
+</div>
+
+
+</br>
+</br>
+</br>
+
+<span title="Click to see key for abbreviations used in the table above"><%= link_to "key for abbreviations", 'https://rxnav.nlm.nih.gov/RxClassIntro.html', :target => "_blank" %> </span>| 
+<span title="Click to return to the home page"><%= link_to "Home", controller: "genes", action: "home" %> </span>| 
+<span title="Click to return to the search results page"><%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> </span>| 
+
+</br>
+</br>

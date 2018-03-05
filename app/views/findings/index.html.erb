@@ -1,6 +1,10 @@
+<% provide(:title, "Associations") %>
 <h1>All Associations Reported</h1>
 
-<table border="1";style="width:100%">
+</br>
+
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> gene </th>
 		<th> variant </th>
@@ -60,6 +64,15 @@
 		</tr>
 	<% end %>
 </table>
+</div>
+
+
+</br>
+</br>
+</br>
 
  
-<%= link_to "home", controller: "genes", action: "home"%> 
+<span title="Click to return to the home page"><%= link_to "home", controller: "genes", action: "home"%> </span>
+
+</br>
+</br>

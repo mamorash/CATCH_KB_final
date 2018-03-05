@@ -1,11 +1,16 @@
-<h2>Showing study details:</h2>
-<%= "Search criteria: " + @search_term %>
-<!-- note to self to make search params visible -->
+
+<% provide(:title, "Study details") %>
+
+<h2> Study details for search: 
+ <%= @search_term %> </h2>
+ 
+ <br/>
 
 <% @pmid_string = 'https://www.ncbi.nlm.nih.gov/pubmed/' %>
 <% @cancer = [] %>
 
-<table border="1"; style="table-layout: fixed; width:100%;">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 <tr>
 	<th> PMID </th>
 	<th> study date </th>
@@ -84,8 +89,15 @@
 		</tr>
 	<% end %>
 </table>
+</div>
+
+<br/>
+<br/>
+<br/>
+
 	
-<table border="1";style="table-layout: fixed; width:100%, border=1">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> PMID </th>
 		<th> follow up measurement </th>
@@ -166,13 +178,22 @@
 			<% end %>
 		</tr>
 	<% end %>
-
 </table>
+</div>
 
-<%= link_to "Cancer detail", controller: "genes", action: "cancer_detail", query: @search_term %> | 
-<%= link_to "Drug detail", controller: "genes", action: "drug_detail", query: @search_term %> | 
-<%= link_to "Home", controller: "genes", action: "home" %> | 
-<%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> | 
+
+<br/>
+<br/>
+<br/>
+
+
+<span title="Click for more information on the cancer types examined in these studies"> <%= link_to "Cancer detail", controller: "genes", action: "cancer_detail", query: @search_term %> </span> | 
+<span title="Click for more information on the drugs examined in these studies"><%= link_to "Drug detail", controller: "genes", action: "drug_detail", query: @search_term %></span>  | 
+<span title="Click to return to the home page"><%= link_to "Home", controller: "genes", action: "home" %> </span> | 
+<span title="Click to return to the search results page"><%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> </span> | 
+
+<br/>
+<br/>
 
 
 

@@ -1,6 +1,10 @@
-<h2>Showing all cancer types:</h2>
+<% provide(:title, "Cancer Types") %>
 
-<table border="1";style="width:100%">
+<h2>Showing all cancer types:</h2>
+</br>
+
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> cancer name </th>
 		<th> SNOMED ID </th>
@@ -14,6 +18,15 @@
 		</tr>
 	<%end%>
 </table>
+</div>
+
+
+</br>
+</br>
+</br>
 
  
-<%= link_to "home", controller: "genes", action: "home"%> 
+<span title="Click to return to the home page"><%= link_to "home", controller: "genes", action: "home"%> </span>
+
+</br>
+</br>

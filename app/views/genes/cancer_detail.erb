@@ -1,7 +1,11 @@
-<h2>Additonal Cancer Information</h2>
-<!-- note to self to make search criteria visible -->
 
-<table border="1";style="width:100%">
+<% provide(:title, "Cancer details") %>
+<h2> Cancer details for papers returned for search: <%= @search_term %> </h2>
+
+</br>
+
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> cancer name </th>
 		<th> SNOMED ID </th>
@@ -15,6 +19,15 @@
 		</tr>
 	<%end%>
 </table>
+</div>
 
-<%= link_to "Home", controller: "genes", action: "home" %> | 
-<%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> | 
+
+</br>
+</br>
+</br>
+
+<span title="Click to return to the home page"><%= link_to "Home", controller: "genes", action: "home" %></span> | 
+<span title="Click to return to the search results page"><%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> </span>| 
+
+</br>
+</br>

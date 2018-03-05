@@ -1,7 +1,10 @@
-<h2>Showing gene details:</h2>
-<!-- note to self to make gene ID visible -->
+<% provide(:title, "Gene details") %>
+<h2> Gene details for papers returned for search: <%= @search_term %> </h2>
 
-<table border="1";style="table-layout: fixed; width:100%">
+</br>
+
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 <tr>
 	<th> gene </th>
 	<th> variant </th>
@@ -56,7 +59,15 @@
 		</tr>
 	<% end %>
 </table>
+</div>
 
 
-<%= link_to "Home", controller: "genes", action: "home" %> | 
-<%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> | 
+</br>
+</br>
+</br>
+
+
+<span title="Click to return to the home page"><%= link_to "Home", controller: "genes", action: "home" %> </span>| 
+<span title="Click to return to the search results page"><%= link_to "Back to Search", controller: "genes", action: "internal_search", query: @search_term %> </span>|
+</br>
+</br> 

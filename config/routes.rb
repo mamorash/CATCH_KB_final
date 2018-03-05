@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   root 'genes#home'
   
   get 'search' => 'genes#search', as: 'search'
+  get 'about' => 'genes#about', as: 'about'
+  get 'team' => 'genes#team', as: 'team'
   get 'mo_search' => 'genes#mo_search', as: 'mo_search'
   #get 'mo_internal_search' => 'mo_papers#internal_search'
   get 'internal_search' => 'genes#internal_search'

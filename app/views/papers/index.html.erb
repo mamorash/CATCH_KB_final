@@ -1,10 +1,21 @@
+<% provide(:title, "Papers") %>
+
 <h2>All Paper Information</h2>
-<!-- note to self to make search criteria visible -->
+<head>
+<style>
+	.hr {
+		border: 5px solid#000;
+		}
+</style>
+</head>
+</br>
 
 <% @pmid_string = 'https://www.ncbi.nlm.nih.gov/pubmed/' %>
 
-<table border="1"; style="table-layout: fixed; width:100%;">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 <tr>
+<thead>
 	<th> PMID </th>
 	<th> study date </th>
 	<th> type of study </th>
@@ -16,7 +27,7 @@
 	<th> number of cases </th>
 	<th> study cohort details </th>
 	<th> sequencing platform </th>
-	
+	</thead>
 </tr>
 	<% @papers.each do |paper| %>
 		<% @temp1 = @pmid_string + paper.PMID.to_s %>
@@ -65,8 +76,16 @@
 		</tr>
 	<% end %>
 </table>
-	
-<table border="1";style="table-layout: fixed; width:100%, border=1">
+</div>
+
+
+
+<br/>
+<hr>
+<br/>
+
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> PMID </th>
 		<th> follow up measurement </th>
@@ -149,6 +168,14 @@
 	<% end %>
 
 </table>
+</div>
 
+
+</br>
+</br>
+</br>
  
-<%= link_to "home", controller: "genes", action: "home"%> 
+<span title="Click to return to the home page"><%= link_to "home", controller: "genes", action: "home"%> </span>
+
+</br>
+</br>

@@ -13,3 +13,131 @@
  *= require_tree .
  *= require_self
  */
+
+/*--Global CSS--*/
+
+nav.navbar { width: 100%; padding: 0; }
+
+nav.navbar.bg-dark {  background-color: #ddd !important; }
+
+/*---------------------------------------------
+	Global Nav  
+	nav link styles
+----------------------------------------------*/
+nav.navbar .navbar-nav .nav-link, 
+nav.navbar .navbar-nav .nav-link:hover,
+nav.navbar .navbar-nav .nav-link:focus { 
+	color: #fff; 
+	outline: none; 
+}
+nav.navbar li:hover, 
+nav.navbar .navbar-nav .active { 
+	background-color: #FFC72C; 
+}
+
+/*---------------------------------------------
+	Nav Branding 
+	This section for the logo style
+----------------------------------------------*/
+.navbar-brand {
+	border: 0;
+	border-radius: 0;
+	background-color: #E87722;
+	margin: 0;
+}
+.navbar-brand:hover { background-color: #E87722; }
+
+/*---------------------------------------------
+	Nav Dropdown
+----------------------------------------------*/
+.navbar .navbar-nav .dropdown-menu { 
+	background-color: #313c48;
+	color: #fff; 
+	margin: 0; 
+	padding: 0; 
+}
+.navbar .navbar-nav .dropdown-menu a { color: #fff; }
+.navbar .navbar-nav .dropdown-menu a:hover { background-color: #FFC72C; }
+
+.navbar-dark .navbar-toggler { border-color: #fff; color: #fff; margin-right: 20px; }
+
+/*------------Tables-------------------*/
+
+.table-class {-sm|-md|-lg|-xl}
+
+<head>
+
+<style>.scroll {
+
+  border: 0;
+
+  border-collapse: collapse;
+
+}
+
+ 
+
+.scroll tr {
+
+  display: flex;
+
+}
+
+ 
+
+.scroll td {
+
+  padding: 3px;
+
+  flex: 1 auto;
+
+  border: 1px solid #aaa;
+
+  width: 1px;
+
+  word-wrap: break;
+
+}
+
+ 
+
+.scroll thead tr:after {
+
+  content: '';
+
+  overflow-y: scroll;
+
+  visibility: hidden;
+
+  height: 0;
+
+}
+
+ 
+
+.scroll thead th {
+
+  flex: 1 auto;
+
+  display: block;
+
+  border: 1px solid #000;
+
+}
+
+ 
+
+.scroll tbody {
+
+  display: block;
+
+  width: 100%;
+
+  overflow-y: auto;
+
+  height: 200px;
+
+}
+
+</style>
+</head>

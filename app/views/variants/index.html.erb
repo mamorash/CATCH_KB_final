@@ -1,11 +1,13 @@
+<% provide(:title, "Variants") %>
 <h2>All Variant Information</h2>
-<!-- note to self to make search criteria visible -->
 <p> Frequencies pulled from Exome Aggregation Consortium (ExAC) API  </p>
 
+</br>
  
 <% url_root='exac.hms.harvard.edu/rest/dbsnp/' %>
 
-<table border="1"; style="width:100%">
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 	<tr>
 		<th> variant </th>
 		<th> allele frequency </th>
@@ -17,5 +19,14 @@
 		</tr>
 	<% end %>
 </table>
+</div>
+
+
+</br>
+</br>
+</br>
  
-<%= link_to "home", controller: "genes", action: "home"%> 
+<span title="Click to return to the home page"><%= link_to "home", controller: "genes", action: "home"%> </span>
+
+</br>
+</br>

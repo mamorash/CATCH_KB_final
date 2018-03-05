@@ -1,6 +1,10 @@
-<h2>Showing all genes:</h2>
+<% provide(:title, "All genes") %>
 
-<table border="1";style="table-layout: fixed; width:100%">
+<h2> All genes in CATCH-KB </h2>
+
+</br>
+<div class="table-responsive-lg table-lg">
+<table class="table table-hover">
 <tr>
 	<th> gene </th>
 	<th> variant </th>
@@ -55,6 +59,15 @@
 		</tr>
 	<% end %>
 </table>
+</div>
 
- 
-<%= link_to "home", controller: "genes", action: "home"%> 
+
+</br>
+</br>
+</br>
+
+
+<span title="Click to return to the home page"> <%= link_to "home", controller: "genes", action: "home"%> </span>
+
+</br>
+</br>

@@ -1,16 +1,17 @@
 <!-- THIS IS THE HOME PAGE -->
-<h1>Welcome CATCH-KB: the cardiotoxicity of chemotherapy knowledgebase</h1>
-<p>This is version 0.2, CATCH-KB is still under development</p>
+<% provide(:title, "CATCH-KB") %>
+<div align="center">
+<h1>Welcome CATCH-KB: The cardiotoxicity of chemotherapy knowledgebase</h1>
+</div>
 
-<pre>
+</br>
+</br>
+</br>
 
-</pre>
-
-<h2>human-based studies</h2>
-<p>search by PMID, gene ID, or variant</p>
+<h2>Human-based studies</h2>
 
 <%= form_tag search_path, method: 'get' do %>
-	<%= text_field_tag :search_keywords, params[:search_keywords] %>
+	<%= text_field_tag :search_keywords, params[:search_keywords], size: 100, maxlength: 200, maxheight: 30, placeholder: "Search by PMID, gene ID, or variant" %>
 	<%= submit_tag "Search" %>
 <% end %>
 
@@ -23,14 +24,11 @@
 <%= link_to "Show all variants", controller: "variants", action: "index"%> |
 <%= link_to "admin", controller: "admin", action: "index"%> | 
 
-<pre>
 
-</pre>
-<h2>additional model organism papers</h2>
-<p>search by PMID or gene ID</p>
+<h2>Additional model organism papers</h2>
 
 <%= form_tag mo_search_path, method: 'get' do %>
-	<%= text_field_tag :mo_search_keywords, params[:mo_search_keywords] %>
+	<%= text_field_tag :mo_search_keywords, params[:mo_search_keywords], size: 100, maxlength: 200, maxheight: 30, placeholder: "Search by PMID or gene ID" %>
 	<%= submit_tag "Search" %>
 <% end %>
 
